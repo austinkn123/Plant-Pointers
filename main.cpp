@@ -17,11 +17,11 @@ int main(int argc, char* argv[]) {
 
     // TODO: Declare variables - plantName, plantCost, flowerName, flowerCost,
     //       colorOfFlowers, isAnnual
-    string plantName, flowerName, colorOfFlowers;
+    string plantName, flowerName, colorOfFlowers, isAnnualString;
     int plantCost, flowerCost;
     bool isAnnual;
 
-
+    cout << "Enter \"plant\" or \"flower\" or enter -1 to quit: ";
     cin >> input;
 
     while (input != "-1") {
@@ -31,9 +31,11 @@ int main(int argc, char* argv[]) {
         if (input == "plant")
         {
             Plant* myPlant = new Plant();
-
+            cout << "Enter plant name: ";
             cin >> plantName;
+            cout << "Enter plant cost: ";
             cin >> plantCost;
+            cout << endl;
 
             myPlant->SetPlantName(plantName);
             myPlant->SetPlantCost(plantCost);
@@ -44,11 +46,20 @@ int main(int argc, char* argv[]) {
         {
             Flower* myFlower = new Flower();
 
+            cout << "Enter flower name: ";
             cin >> flowerName;
+            cout << "Enter flower cost: ";
             cin >> flowerCost;
 
-            cin >> isAnnual;
+            cout << "Is it annual (true or false): ";
+            cin >> isAnnualString;
+            if (isAnnualString == "true")
+                isAnnual = true;
+            else if (isAnnualString == "false")
+                isAnnual = false;
+            cout << "Enter flower color: ";
             cin >> colorOfFlowers;
+            cout << endl;
 
             myFlower->SetPlantName(flowerName);
             myFlower->SetPlantCost(flowerCost);
@@ -58,7 +69,9 @@ int main(int argc, char* argv[]) {
 
             myGarden.push_back(myFlower);
         }
+        cout << "Enter \"plant\" or \"flower\" or enter -1 to quit: ";
         cin >> input;
+        cout << endl;
     }
 
     // TODO: Call the method PrintVector to print myGarden
